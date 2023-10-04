@@ -30,7 +30,7 @@ const RegisterPersonPage = () => {
             //  }
             console.log(name,phone,email,password,ocupation);
             const body = {name,phone,email,password,ocupation}
-            const {data,statusText} = await neggoApi.post('/auth/person/register',body);
+            const {data,statusText} = await neggoApi.post('/auth/person/register',body, {headers: { 'content-type': 'application/x-www-form-urlencoded' }},);
             if(statusText=== 'OK'){
                 router.push('/main/person');
             }else {

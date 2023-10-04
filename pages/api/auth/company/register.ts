@@ -17,7 +17,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
 }
 
 const registerCompany= async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-    const {name,phone,email,password,ocupation} = req.body;
+    const {name,phone,email,password,name_company} = req.body;
   
 
      await db.connect();
@@ -26,7 +26,7 @@ const registerCompany= async (req: NextApiRequest, res: NextApiResponse<Data>) =
          phone,
          email,
          password,
-         ocupation
+         name_company
       });
       await company.save();
      await db.disconnect();
