@@ -40,7 +40,7 @@ const LoginPersonPage = () => {
   return (
     <AuthLayout title={'Ingresar'}>
         <form onSubmit={handleSubmit(onRegisterForm)}>
-            <Box sx={{ width: 340, padding:'50px 20px' }}>
+            <Box sx={{ width: 348, padding:'50px 20px' }}>
                 <Grid container spacing={2} >
                     <Grid item xs={12}>
                         <Typography variant='h1' component="h1">Inicia Session</Typography>
