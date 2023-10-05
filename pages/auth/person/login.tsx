@@ -22,24 +22,25 @@ const LoginPersonPage = () => {
     const [error,setError] = useState(false);
     const router = useRouter();
  
-    const onRegisterForm = async({phone,password}:FormData) => {
+    const onLoginPersonForm = async({phone,password}:FormData) => {
         //  if(data === 'OK'){
             //     console.log('Ok agregado');
             //  }
             console.log(phone,password);
-            // const body = {name,phone,email,password,ocupation}
-            // const {data,statusText} = await neggoApi.post('/auth/person/register',body, {headers: { 'content-type': 'application/x-www-form-urlencoded' }},);
-            // if(statusText=== 'OK'){
-            //     router.push('/main/person');
-            // }else {
-            //     setError(true);
-            // }
+            const body = {phone,password}
+            const {data,statusText} = await neggoApi.post('/auth/person/login',body,);
+             console.log(statusText,data);
+            if(statusText=== 'OK'){
+                router.push('/main/person');
+            }else {
+                setError(true);
+            }
             
     }
 
   return (
     <AuthLayout title={'Ingresar'}>
-        <form onSubmit={handleSubmit(onRegisterForm)}>
+        <form onSubmit={handleSubmit(onLoginPersonForm)}>
             <Box sx={{ width: 348, padding:'50px 20px' }}>
                 <Grid container spacing={2} >
                     <Grid item xs={12}>

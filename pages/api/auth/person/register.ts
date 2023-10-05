@@ -3,6 +3,7 @@ import { connect } from '../../../../database/db';
 import { IUser } from '../../../../interfaces';
 import { db } from '../../../../database';
 import { User } from '../../../../models';
+import { encryptPassword } from '../../../../utils';
 
 
 type Data = { message: string } | IUser;
@@ -25,7 +26,7 @@ const registerUser= async (req: NextApiRequest, res: NextApiResponse<Data>) => {
          name,
          phone,
          email,
-         password,
+         password: encryptPassword(password),
          ocupation
       });
       await user.save();

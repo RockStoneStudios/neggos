@@ -27,7 +27,7 @@ const RegisterCompanyPage = () => {
         console.log(name,phone,email,password,name_company);
         const {data,statusText} = await neggoApi.post('/auth/company/register',{name,phone,email,password,name_company},{headers: { 'content-type': 'application/x-www-form-urlencoded' }});
         if(statusText=== 'OK'){
-            router.push('/main/company');
+            router.push('/auth/company/login');
         }else {
             setError(true);
         }
@@ -42,7 +42,11 @@ const RegisterCompanyPage = () => {
                     <Grid item xs={12}>
                         <Typography variant='h1' component="h1">Registra tu Empresa</Typography>
                     </Grid>
-
+                    {
+                        error && (
+                            <Typography variant='h6' color={'#a81102'}>Error </Typography>
+                        )
+                     }
                     <Grid item xs={12}>
                         <TextField
                         label="Nombre" 
@@ -118,11 +122,7 @@ const RegisterCompanyPage = () => {
                             Ingresar
                         </Button>
                     </Grid>
-                     {
-                        error && (
-                            <Typography variant='h6' color={'#a81102'}>Error </Typography>
-                        )
-                     }
+                    
                     <Grid item xs={12} flexDirection='column' display='flex' justifyContent='center' alignItems='center' gap={2}>
                     <NextLink href="/auth/company/login" passHref >
                            <Link color={'#1165aa'} fontSize={14} fontWeight={600} underline='always'>

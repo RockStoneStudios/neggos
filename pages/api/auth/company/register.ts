@@ -3,7 +3,7 @@ import { connect } from '../../../../database/db';
 import { ICompany, IUser } from '../../../../interfaces';
 import { db } from '../../../../database';
 import { Company, User } from '../../../../models';
-
+import { encryptPassword } from '../../../../utils';
 
 type Data = { message: string } | ICompany;
 
@@ -24,8 +24,8 @@ const registerCompany= async (req: NextApiRequest, res: NextApiResponse<Data>) =
       const company = await Company.create({
          name,
          phone,
-         email,
-         password,
+         email ,
+         password: encryptPassword(password),
          name_company
       });
       await company.save();

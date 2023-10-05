@@ -32,7 +32,7 @@ const RegisterPersonPage = () => {
             const body = {name,phone,email,password,ocupation}
             const {data,statusText} = await neggoApi.post('/auth/person/register',body, {headers: { 'content-type': 'application/x-www-form-urlencoded' }},);
             if(statusText=== 'OK'){
-                router.push('/main/person');
+                router.push('/auth/person/login');
             }else {
                 setError(true);
             }

@@ -20,21 +20,22 @@ const RegisterCompanyPage = () => {
     const {register,handleSubmit,formState :{errors}} = useForm<FormData>();
     const [error,setError] = useState(false);
     const router = useRouter();
-   const onRegisterCompanyForm = async ({phone,password} : FormData) => {
+   const onLoginCompanyForm = async ({phone,password} : FormData) => {
     
         console.log(phone,password);
-        // const {data,statusText} = await neggoApi.post('/auth/company/register',{name,phone,email,password,name_company},{headers: { 'content-type': 'application/x-www-form-urlencoded' }});
-        // if(statusText=== 'OK'){
-        //     router.push('/main/company');
-        // }else {
-        //     setError(true);
-        // }
+        const {data,statusText} = await neggoApi.post('/auth/company/login',{phone,password},{headers: { 'content-type': 'application/x-www-form-urlencoded' }});
+        console.log(statusText,data)
+        if(statusText === 'OK'){
+            router.push('/main/company');
+        }else {
+            setError(true);
+        }
    
    }
 
   return (
     <AuthLayout title={'Ingresar'}>
-        <form onSubmit={handleSubmit(onRegisterCompanyForm)}>
+        <form onSubmit={handleSubmit(onLoginCompanyForm)}>
             <Box sx={{ width: 348, padding:'50px 20px' }}>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>

@@ -3,6 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { db, seedDatabase } from '../../database';
 import { Company, User } from '../../models';
 
+
 type Data = {
     message :  string
 }
