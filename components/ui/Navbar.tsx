@@ -37,7 +37,7 @@ export const Navbar = () => {
                 <SearchOutlined />
             </IconButton>
 
-            <NextLink href="/auth/person/loggin" passHref>
+            <NextLink href="/auth/person/login" passHref>
                 <Link>
                     <IconButton>
                       
