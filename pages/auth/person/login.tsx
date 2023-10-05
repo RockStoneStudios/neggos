@@ -26,11 +26,12 @@ const LoginPersonPage = () => {
         //  if(data === 'OK'){
             //     console.log('Ok agregado');
             //  }
-            console.log(phone,password);
+            
             const body = {phone,password}
-            const {data,statusText} = await neggoApi.post('/auth/person/login',body,);
-             console.log(statusText,data);
-            if(statusText=== 'OK'){
+            const {data,statusText,status} = await neggoApi.post('/auth/person/login',body);
+             console.log('-------',data);
+             console.log(statusText,data,status);
+            if(statusText=== 'OK' || status === 200){
                 router.push('/main/person');
             }else {
                 setError(true);
