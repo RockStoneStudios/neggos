@@ -17,12 +17,12 @@ export const Navbar = () => {
             <Box flex={ 1 } />
 
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                <NextLink href='/auth/person/register' passHref>
+                <NextLink href='/auth/person/login' passHref>
                     <Link>
                         <Button sx={{color: '#1165ad',fontSize:17,fontWeight:600}}>Personas</Button>
                     </Link>
                 </NextLink>
-                <NextLink href='/auth/company/register' passHref>
+                <NextLink href='/auth/company/login' passHref>
                     <Link>
                         <Button sx={{color: '#1165ad',fontSize:17,fontWeight : 600}}>Empresas</Button>
                     </Link>
@@ -37,7 +37,7 @@ export const Navbar = () => {
                 <SearchOutlined />
             </IconButton>
 
-            <NextLink href="/auth/person/register" passHref>
+            <NextLink href="/auth/person/loggin" passHref>
                 <Link>
                     <IconButton>
                       

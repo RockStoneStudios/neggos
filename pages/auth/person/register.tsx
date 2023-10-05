@@ -42,7 +42,7 @@ const RegisterPersonPage = () => {
   return (
     <AuthLayout title={'Ingresar'}>
         <form onSubmit={handleSubmit(onRegisterForm)}>
-            <Box sx={{ width: 350, padding:'50px 20px' }}>
+            <Box sx={{ width: 340, padding:'50px 20px' }}>
                 <Grid container spacing={2} >
                     <Grid item xs={12}>
                         <Typography variant='h1' component="h1">Registrarme</Typography>
@@ -124,10 +124,15 @@ const RegisterPersonPage = () => {
                         </Button>
                     </Grid>
 
-                    <Grid item xs={12} display='flex' justifyContent='end'>
+                    <Grid item xs={12} gap={2} flexDirection='column' display='flex' justifyContent='center' alignItems='center'>
+                        <NextLink href="/auth/person/login" passHref >
+                            <Link color={'#1165aa'} fontSize={14} fontWeight={600} underline='always'>
+                                ¿Inicia Session?
+                            </Link>
+                        </NextLink>
                         <NextLink href="/auth/company/register" passHref >
                             <Link color={'#1165aa'} fontSize={14} fontWeight={600} underline='always'>
-                                ¿Registra tu empresa?
+                                ¿Registrate tu empresa?
                             </Link>
                         </NextLink>
                     </Grid>

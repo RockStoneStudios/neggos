@@ -37,7 +37,7 @@ const RegisterCompanyPage = () => {
   return (
     <AuthLayout title={'Ingresar'}>
         <form onSubmit={handleSubmit(onRegisterCompanyForm)}>
-            <Box sx={{ width: 350, padding:'50px 20px' }}>
+            <Box sx={{ width: 340, padding:'50px 20px' }}>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
                         <Typography variant='h1' component="h1">Registra tu Empresa</Typography>
@@ -123,9 +123,14 @@ const RegisterCompanyPage = () => {
                             <Typography variant='h6' color={'#a81102'}>Error </Typography>
                         )
                      }
-                    <Grid item xs={12} display='flex' justifyContent='end'>
+                    <Grid item xs={12} flexDirection='column' display='flex' justifyContent='center' alignItems='center' gap={2}>
+                    <NextLink href="/auth/company/login" passHref >
+                           <Link color={'#1165aa'} fontSize={14} fontWeight={600} underline='always'>
+                                Inicia Sesion
+                            </Link>
+                        </NextLink>
                         <NextLink href="/auth/person/register" passHref >
-                        <Link color={'#1165aa'} fontSize={14} fontWeight={600} underline='always'>
+                           <Link color={'#1165aa'} fontSize={14} fontWeight={600} underline='always'>
                                 Registrate como Persona Natural
                             </Link>
                         </NextLink>
