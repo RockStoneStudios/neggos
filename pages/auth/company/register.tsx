@@ -25,8 +25,9 @@ const RegisterCompanyPage = () => {
    const onRegisterCompanyForm = async ({name,phone,email,password,name_company} : FormData) => {
     
         console.log(name,phone,email,password,name_company);
-        const {data,statusText} = await neggoApi.post('/auth/company/register',{name,phone,email,password,name_company},{headers: { 'content-type': 'application/x-www-form-urlencoded' }});
-        if(statusText=== 'OK'){
+        const {data,statusText,status} = await neggoApi.post('/auth/company/register',{name,phone,email,password,name_company},{headers: { 'content-type': 'application/x-www-form-urlencoded' }});
+         console.log(data,statusText,status)
+        if(statusText=== 'OK' || status === 200){
             router.push('/auth/company/login');
         }else {
             setError(true);
