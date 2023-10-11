@@ -7,9 +7,9 @@ import { encryptPassword, isValidEmail, signToken } from '../../../../utils';
 
 type Data = { message: string } |  {
     token: string;
-    user: {
+    company: {
         email: string;
-        name: string;
+        name_company: string;
         phone: string;
     };
 }
@@ -54,7 +54,7 @@ const registerCompany= async (req: NextApiRequest, res: NextApiResponse<Data>) =
     
     
     await db.connect();
-    const company = await User.findOne({ email });
+    const company = await Company.findOne({ email });
 
     if ( company ) {
         return res.status(400).json({
@@ -62,7 +62,7 @@ const registerCompany= async (req: NextApiRequest, res: NextApiResponse<Data>) =
         })
     }
 
-    const newUser = new User({
+    const newCompany = new Company({
         email: email.toLocaleLowerCase(),
         password: encryptPassword( password ),
         name,
@@ -71,7 +71,7 @@ const registerCompany= async (req: NextApiRequest, res: NextApiResponse<Data>) =
     });
 
     try {
-        await newUser.save({ validateBeforeSave: true });
+        await newCompany.save({ validateBeforeSave: true });
 
     } catch (error) {
         console.log(error);
@@ -80,16 +80,16 @@ const registerCompany= async (req: NextApiRequest, res: NextApiResponse<Data>) =
         })
     }
    
-    const { _id,  } = newUser;
+    const { _id } = newCompany;
 
     const token = signToken( _id, email );
 
     return res.status(200).json({
         token, //jwt
-        user: {
+        company: {
             email, 
             phone,
-            name,
+            name_company,
         }
     })
 
