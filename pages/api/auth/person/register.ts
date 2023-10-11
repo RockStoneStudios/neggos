@@ -68,5 +68,8 @@ const registerUser= async (req: NextApiRequest, res: NextApiResponse<Data>) => {
         ocupation : ocupation
       
     });
+
+     await newUser.save();
+    await db.disconnect();
     return res.status(200).json(newUser);
 }
